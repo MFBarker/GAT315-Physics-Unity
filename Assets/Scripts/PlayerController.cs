@@ -51,4 +51,6 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, 2);
     }
+
+    public Vector3 GetForce() { return force; }
 }
