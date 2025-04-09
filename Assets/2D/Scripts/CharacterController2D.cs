@@ -5,6 +5,8 @@ public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] float speed = 3;
     [SerializeField] float jumpheight = 2;
+    [SerializeField] Animator animator;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     Rigidbody2D rb;
     Vector2 force;
@@ -24,12 +26,17 @@ public class CharacterController2D : MonoBehaviour
         {
             rb.AddForce(Vector2.up * Mathf.Sqrt(-2 * Physics2D.gravity.y * jumpheight), ForceMode2D.Impulse);
         }
+
+        animator.SetFloat("Speed", Mathf.Abs(direction.x));
+
+        //flip sprite
+        if (direction.x > 0.05) spriteRenderer.flipX = false;
+        else if (direction.x < 0) spriteRenderer.flipX = true;
     }
 
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(force.x, rb.linearVelocity.y);
-        //rb.AddForce(force, ForceMode2D.Force);
     }
 
     private void OnDrawGizmosSelected()
