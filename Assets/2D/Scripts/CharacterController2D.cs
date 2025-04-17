@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -30,7 +31,7 @@ public class CharacterController2D : MonoBehaviour
 
 	Rigidbody2D rb;                                // Reference to attached Rigidbody2D component
 
-	int facing = 1;                                // Facing direction: 1 = right, -1 = left
+	[DoNotSerialize] public int facing = 1;                                // Facing direction: 1 = right, -1 = left
 	float currentSpeed = 0f;                       // Current horizontal speed after smoothing
 
 	// Ground collision tracking

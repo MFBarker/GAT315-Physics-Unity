@@ -1,16 +1,34 @@
 using UnityEngine;
 
-public class AnimationEventReciever : MonoBehaviour
+public class AnimationEventReceiver : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void OnAnimEvent()
     {
-        
+        print("animation event");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnAnimEventString(string str)
     {
-        
+        print("animation event: " + str);
+    }
+
+    public void OnAnimEventInt(int v)
+    {
+        print("animation event: " + v);
+    }
+
+    public void OnAnimEventFloat(float f)
+    {
+        print("animation event: " + f);
+    }
+
+    public void OnAnimEventGameObect(GameObject go)
+    {
+        print("animation event: " + go.name);
+    }
+
+    public void OnAnimationEvent(AnimationEvent animationEvent)
+    {
+        print("animation event: " + animationEvent);
     }
 }
