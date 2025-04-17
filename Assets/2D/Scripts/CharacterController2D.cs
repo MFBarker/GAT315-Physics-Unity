@@ -236,10 +236,20 @@ public class CharacterController2D : MonoBehaviour
 		animator?.SetTrigger("Hit");
 	}
 
-	/// <summary>
-	/// Flip the character's facing direction by updating the sprite.
-	/// </summary>
-	private void FlipDirection()
+    public void OnSprint()
+    {
+		animator.SetFloat("Run",1);
+    }
+
+	public void OnSprintReleased()
+	{
+        animator.SetFloat("Run", 0);
+    }
+
+    /// <summary>
+    /// Flip the character's facing direction by updating the sprite.
+    /// </summary>
+    private void FlipDirection()
 	{
 		facing *= -1;  // Toggle between 1 and -1
 		if (spriteRenderer != null)
