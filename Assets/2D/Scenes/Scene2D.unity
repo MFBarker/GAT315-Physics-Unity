@@ -198,7 +198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &34859412
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1318,7 +1318,7 @@ MonoBehaviour:
     maxNormalAngle: 170
   animator: {fileID: 1692967983}
   spriteRenderer: {fileID: 1692967982}
-  facing: 1
+  characterHealth: {fileID: 0}
 --- !u!212 &463450004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1517,8 +1517,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  destroyOnDeath: 1
+  destroyOnDeath: 0
   destroyDelay: 0
+  characterController: {fileID: 463450003}
 --- !u!114 &463450011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23563,6 +23564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1496065207}
+  - component: {fileID: 1496065208}
   - component: {fileID: 1496065206}
   - component: {fileID: 1496065205}
   m_Layer: 0
@@ -23688,6 +23690,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496065208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496065204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b4860c48275de48a9a956a269aa78b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 10
+  damageRate: 1
+  destroySelfOnDamage: 0
+  affectTag: 
+  affectLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &1562271109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23829,7 +23850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &1632005841
 CircleCollider2D:
   m_ObjectHideFlags: 0

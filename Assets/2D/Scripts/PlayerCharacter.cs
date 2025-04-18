@@ -7,6 +7,9 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] AnimationEventRouter animationEventRouter;
     [SerializeField] GameObject meleeWeaponL;
     [SerializeField] GameObject meleeWeaponR;
+    
+
+    private float health = 0;
 
     private void Awake()
     {
@@ -15,7 +18,12 @@ public class PlayerCharacter : MonoBehaviour
 
     void OnMeleeAttack(AnimationEvent animationEvent)
     {
-        if (characterController.facing == -1) meleeWeaponL.SetActive((animationEvent.intParameter == 1));
-        else if (characterController.facing == 1) meleeWeaponR.SetActive((animationEvent.intParameter == 1));
+        if (characterController.Facing == CharacterController2D.FACE_LEFT) meleeWeaponL.SetActive((animationEvent.intParameter == 1));
+        else if (characterController.Facing == CharacterController2D.FACE_RIGHT) meleeWeaponR.SetActive((animationEvent.intParameter == 1));
+    }
+
+    void method()
+    { 
+        
     }
 }

@@ -28,11 +28,16 @@ public class CharacterController2D : MonoBehaviour
 	[Header("Components")]
 	[SerializeField] Animator animator;             // Reference to character's animator
 	[SerializeField] SpriteRenderer spriteRenderer; // Reference to character's sprite renderer
+    [SerializeField] Health characterHealth;
 
-	Rigidbody2D rb;                                // Reference to attached Rigidbody2D component
+    Rigidbody2D rb;                                // Reference to attached Rigidbody2D component
 
-	[DoNotSerialize] public int facing = 1;                                // Facing direction: 1 = right, -1 = left
+	public const int FACE_LEFT = -1;
+	public const int FACE_RIGHT = 1;
+
+	int facing = FACE_RIGHT;                                // Facing direction: 1 = right, -1 = left
 	float currentSpeed = 0f;                       // Current horizontal speed after smoothing
+	public int Facing => facing;
 
 	// Ground collision tracking
 	RaycastHit2D[] raycastHits = new RaycastHit2D[5]; // Buffer for ground collision results

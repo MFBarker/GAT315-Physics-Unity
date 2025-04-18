@@ -9,8 +9,11 @@ public class Health : MonoBehaviour
     [SerializeField] private float maxHealth = 100;           // Maximum possible health
     [SerializeField] private bool destroyOnDeath = true;      // Whether to destroy the game object on death
     [SerializeField] private float destroyDelay = 0;          // Delay before destroying the game object (useful for death animations)
+    [SerializeField] private CharacterController2D? characterController;
 
     private bool isDead = false;                              // Flag to track death state
+
+    
 
     /// <summary>
     /// Initialize health to maxHealth when the component is created.
@@ -31,6 +34,7 @@ public class Health : MonoBehaviour
 
         // Reduce health by damage amount
         health -= damage;
+        if (characterController != null) { characterController.OnHit(); }
 
         // Check if health is depleted
         if (health <= 0)
@@ -63,6 +67,8 @@ public class Health : MonoBehaviour
         // Set death state
         isDead = true;
         health = 0;
+
+        if (characterController != null) { characterController.OnDeath(); }
 
         // Destroy the game object if configured to do so
         if (destroyOnDeath)
