@@ -7,9 +7,26 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] AnimationEventRouter animationEventRouter;
     [SerializeField] GameObject meleeWeaponL;
     [SerializeField] GameObject meleeWeaponR;
-    
+    [SerializeField] ObserverExample observer;
 
-    private float health = 0;
+    [Header("Player Data")]
+    [SerializeField] IntDataSO scoreData;
+
+    //private float health = 0;
+    private void OnEnable()
+    {
+        //observer.onFunctionStart += Observer;
+    }
+
+    private void OnDisable()
+    {
+        //observer.onFunctionStart -= Observer;
+    }
+
+    public void Observer()
+    {
+        print("Observer");
+    }
 
     private void Awake()
     {

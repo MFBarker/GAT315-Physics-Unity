@@ -1465,7 +1465,19 @@ MonoBehaviour:
         m_CallState: 2
   OnButtonReleased:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 463450003}
+        m_TargetAssemblyTypeName: CharacterController2D, Assembly-CSharp
+        m_MethodName: OnJumpRelease
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &463450008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,8 +1530,37 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   destroyOnDeath: 0
-  destroyDelay: 0
-  characterController: {fileID: 463450003}
+  destroyDelay: 5
+  onDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 463450003}
+        m_TargetAssemblyTypeName: CharacterController2D, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 463450003}
+        m_TargetAssemblyTypeName: CharacterController2D, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &463450011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,6 +1577,7 @@ MonoBehaviour:
   animationEventRouter: {fileID: 1692967985}
   meleeWeaponL: {fileID: 34859411}
   meleeWeaponR: {fileID: 1632005840}
+  observer: {fileID: 850230868}
 --- !u!114 &463450012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2577,6 +2619,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5533913956610867475, guid: 1dc0485f5d7c08c428997d64463b9501, type: 3}
   m_PrefabInstance: {fileID: 779041160}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &850230867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 850230869}
+  - component: {fileID: 850230868}
+  m_Layer: 0
+  m_Name: Observer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &850230868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850230867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b381581c2985a2c4ca07e4281eac0cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFunctionStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 850230868}
+        m_TargetAssemblyTypeName: ObserverExample, Assembly-CSharp
+        m_MethodName: FunctionStart1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onFunctionStop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 850230868}
+        m_TargetAssemblyTypeName: ObserverExample, Assembly-CSharp
+        m_MethodName: FunctionStop
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 12
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &850230869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850230867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &910441049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25454,3 +25570,4 @@ SceneRoots:
   - {fileID: 1354999171}
   - {fileID: 1472257148}
   - {fileID: 1496065207}
+  - {fileID: 850230869}
