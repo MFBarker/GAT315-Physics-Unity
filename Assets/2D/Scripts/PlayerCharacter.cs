@@ -39,8 +39,8 @@ public class PlayerCharacter : MonoBehaviour
         else if (characterController.Facing == CharacterController2D.FACE_RIGHT) meleeWeaponR.SetActive((animationEvent.intParameter == 1));
     }
 
-    void method()
-    { 
-        
+    public void onDeath()
+    {
+        characterController.OnMove(Vector2.zero);
     }
 }

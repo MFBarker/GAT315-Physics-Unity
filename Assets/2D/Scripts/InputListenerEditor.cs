@@ -30,11 +30,11 @@ public class InputListenerEditor : Editor
 		// If we have a valid input action, display appropriate events based on its type
 		if (inputAction != null)
 		{
-			// Get the expected control type from the input action
-			string type = inputAction.expectedControlType;
+            // Get the expected control type from the input action
+            string type = inputAction.TryGetControlType();
 
-			// Add some space and a header for the events section
-			EditorGUILayout.Space();
+            // Add some space and a header for the events section
+            EditorGUILayout.Space();
 			EditorGUILayout.LabelField("Events for Input Type: " + type, EditorStyles.boldLabel);
 
 			// Show only the relevant events for the current input type
