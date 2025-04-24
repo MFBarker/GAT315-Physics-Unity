@@ -12,6 +12,10 @@ public class PlayerCharacter : MonoBehaviour
     [Header("Player Data")]
     [SerializeField] IntDataSO scoreData;
 
+    [Header("Player Events")]
+    [SerializeField] EventChannelSO onPlayerDeath;
+
+
     //private float health = 0;
     private void OnEnable()
     {
@@ -41,6 +45,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public void onDeath()
     {
+        onPlayerDeath.Raise();
         characterController.OnMove(Vector2.zero);
     }
 }
