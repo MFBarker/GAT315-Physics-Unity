@@ -52,12 +52,14 @@ public class CharacterController2D : MonoBehaviour
 	// Movement input
 	Vector2 direction;                              // Current input direction (typically from -1 to 1)
 
-	/// <summary>
-	/// Sets the movement direction based on input.
-	/// Called by input system when movement input changes.
-	/// </summary>
-	/// <param name="v">Vector2 containing horizontal and vertical input values</param>
-	public void OnMove(Vector2 v) => direction = v;
+    public bool isDead = false;
+
+    /// <summary>
+    /// Sets the movement direction based on input.
+    /// Called by input system when movement input changes.
+    /// </summary>
+    /// <param name="v">Vector2 containing horizontal and vertical input values</param>
+    public void OnMove(Vector2 v) => direction = v;
 
 	/// <summary>
 	/// Initialize references. Called before Start.
@@ -82,6 +84,8 @@ public class CharacterController2D : MonoBehaviour
 	/// </summary>
 	void FixedUpdate()
 	{
+		if(isDead) return;
+
 		// Calculate target speed based on input direction
 		float targetSpeed = direction.x * speed;
 
@@ -123,6 +127,7 @@ public class CharacterController2D : MonoBehaviour
 	/// </summary>
 	void UpdateFacing()
 	{
+		if(isDead) return;
 		// Only flip if we're moving and facing the opposite direction
 		if (direction.x != 0 && Mathf.Sign(direction.x) != facing)
 		{
@@ -178,6 +183,7 @@ public class CharacterController2D : MonoBehaviour
 	/// </summary>
 	public void OnJump()
 	{
+		if (isDead) return;
 		if (coyoteTimer > 0)
 		{
 			// First jump - using coyote time for better feel
@@ -231,6 +237,7 @@ public class CharacterController2D : MonoBehaviour
 	public void OnDeath()
 	{
 		animator?.SetTrigger("Death");
+		isDead = true;
 	}
 
 	/// <summary>

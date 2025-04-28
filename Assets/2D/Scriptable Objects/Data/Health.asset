@@ -15,4 +15,5 @@ MonoBehaviour:
   description: 'Stores the Health of the Player
 
 '
-  value: 100
+  defaultValue: 100
+  value: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] FloatDataSO heathVal;
+    [SerializeField] FloatDataSO healthVal;
     [SerializeField] IntDataSO scoreVal;
 
     [Header("Game UI")]
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         //Update UI
-        healthText.text = $"Health: {heathVal.Value}";
+        healthText.text = $"Health: {healthVal.Value}/{healthVal.DefaultValue}";
         scoreText.text = $"Score: {scoreVal.Value}";
     }
 
