@@ -11,11 +11,13 @@ public class GameManager : MonoBehaviour
     [Header("Game UI")]
     [SerializeField] TMP_Text healthText;
     [SerializeField] TMP_Text scoreText;
+    [SerializeField] GameObject keyImage;
 
 
     private void Start()
     {
         //onPlayerDeath.AddListener(OnPlayerDeath);
+        if(keyImage.activeSelf) keyImage.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -28,5 +30,15 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         print("Player Dead");
+    }
+
+    public void onKeyGet()
+    { 
+        keyImage.SetActive(true);
+    }
+
+    public void onRespawn()
+    {
+        if (keyImage.activeSelf) keyImage.SetActive(false);
     }
 }

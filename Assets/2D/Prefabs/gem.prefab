@@ -49,6 +49,9 @@ MonoBehaviour:
   type: 1
   Score: {fileID: 11400000, guid: 71219b10aa5cc4341b5e3aa1a6c2efe3, type: 2}
   val: 100
+  destroyImmediately: 1
+  interactInput: {fileID: 0}
+  interactEvent: {fileID: 0}
 --- !u!212 &7917258441068328686
 SpriteRenderer:
   m_ObjectHideFlags: 0
