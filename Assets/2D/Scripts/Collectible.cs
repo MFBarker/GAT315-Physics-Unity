@@ -55,29 +55,37 @@ public class Collectible : MonoBehaviour
 
 }
 
-//Custom Editor ()
-//[CustomEditor(typeof(Collectible))]
-//public class CollectibleEditor : Editor
-//{
-//    void OnInspectorGUI()
-//    {
-//        // the match object
-//        Collectible collectible = (Collectible)target;
+//Custom Editor
+/*
+ * Custom editor
+ * 
+ * links:
+ * https://docs.unity3d.com/ScriptReference/EditorGUILayout.html
+ * https://stackoverflow.com/questions/79446272/how-do-i-show-certain-variables-depending-on-my-enum-c
+ 
+ */
+[CustomEditor(typeof(Collectible))]
+public class CollectibleEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        Collectible collectible = (Collectible)target;
 
-//        // display dropdown for gamemodes
-//        collectible.type = (eType)EditorGUILayout.EnumPopup("Gamemode", collectible.type);
-//        collectible.destroyImmediately = EditorGUILayout.("Gamemode", collectible.type);
+        collectible.type = (eType)EditorGUILayout.EnumPopup("Type", collectible.type);
+        collectible.destroyImmediately = EditorGUILayout.Toggle("Destroy Immediately",collectible.destroyImmediately);
 
-//        //Score Objects
-//        if (collectible.type == eType.Coin || collectible.type == eType.Gem)
-//        {
-//            collectible.val = EditorGUILayout.IntField("Value", collectible.val);
-//        }
+        //Score Objects (Coin, Gem)
+        if (collectible.type == eType.Coin || collectible.type == eType.Gem)
+        {
+            collectible.val = EditorGUILayout.IntField("Value", collectible.val);
+            collectible.Score = (IntDataSO) EditorGUILayout.ObjectField("Score Data",collectible.Score,typeof(IntDataSO),true);
+        }
 
-//        // Key
-//        if (collectible.type == eType.Key)
-//        {
-//            collectible.interactInput = EditorGUILayout.(collectible.interactInput);
-//        }
-//    }
-//}
+        // Key
+        if (collectible.type == eType.Key)
+        {
+            collectible.interactInput = (InputActionReference) EditorGUILayout.ObjectField("Interact Input",collectible.interactInput,typeof(InputActionReference),true);
+            collectible.interactEvent = (EventChannelSO) EditorGUILayout.ObjectField("Interact Event",collectible.interactEvent,typeof(EventChannelSO),true);
+        }
+    }
+}

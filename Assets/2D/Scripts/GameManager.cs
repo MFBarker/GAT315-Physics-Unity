@@ -1,6 +1,7 @@
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] IntDataSO scoreVal;
 
     [Header("Game UI")]
+    [SerializeField] GameObject GameUI;
     [SerializeField] TMP_Text healthText;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] GameObject keyImage;
 
+    [Header("Win/Loss UI")]
+    [SerializeField] GameObject GOBaseUI;
 
     private void Start()
     {
@@ -35,6 +39,16 @@ public class GameManager : MonoBehaviour
     public void onKeyGet()
     { 
         keyImage.SetActive(true);
+    }
+
+    public void onDoorOpen()
+    {
+        //if have key, game over
+        if (keyImage.activeSelf)
+        { 
+            //show ui
+            //destroy player
+        }
     }
 
     public void onRespawn()
