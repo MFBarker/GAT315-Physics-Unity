@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Win/Loss UI")]
     [SerializeField] GameObject GOBaseUI;
+    [SerializeField] TMP_Text winText;
+    [SerializeField] TMP_Text LoseText;
 
     private void Start()
     {
