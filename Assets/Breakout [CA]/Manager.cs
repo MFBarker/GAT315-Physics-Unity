@@ -1,7 +1,9 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.LightTransport;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.InputSystem;
 
 public class Manager : Singleton<Manager>
 {
@@ -15,12 +17,19 @@ public class Manager : Singleton<Manager>
     [SerializeField] GameObject winUI;
     [SerializeField] GameObject loseUI;
     //Player
-    [Header("Player")]
+    [Header("Game")]
     [SerializeField] GameObject player;
     [SerializeField] GameObject ball;
 
     [SerializeField] Transform playerSpawn;
     [SerializeField] Transform ballSpawn;
+
+    [SerializeField] GameObject bricksPrefab;
+    [SerializeField] GameObject bricksInWorld;
+
+    [Header("Input")]
+    [SerializeField] InputActionReference resetAction;
+
     private bool canMove = false;
 
     //Variables
@@ -43,12 +52,20 @@ public class Manager : Singleton<Manager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ToTitle();
+        //firstRun = true
+        ToTitle(true);
+
+        //Debug.Log(Physics2D.GetIgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("StaticStuff")));
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (resetAction.action.IsPressed())
+        {
+            //reset position
+            OnRespawn(true);
+        }
     }
 
     public void OnStart()
@@ -108,6 +125,10 @@ public class Manager : Singleton<Manager>
 
             livesText.text = $"Lives: {lives:00}";
             scoreText.text = string.Format("Score: {0:0000}", score);
+
+            //Reset Bricks (Destroy Current, Spawn New Ones, Set variable)
+            Destroy(bricksInWorld.gameObject);
+            bricksInWorld = GameObject.Instantiate(bricksPrefab);
         }
     }
 
@@ -118,7 +139,6 @@ public class Manager : Singleton<Manager>
             //player has restarted or is below the kill zone
             player.transform.position = playerSpawn.position;
             ball.transform.position = ballSpawn.position;
-            player.GetComponent<SimplePlayer>().resetMove();
             canMove = true;
         }
         else
@@ -130,15 +150,13 @@ public class Manager : Singleton<Manager>
         }
     }
 
-    public void ToTitle()
+    public void ToTitle(bool firstRun)
     {
+        if(!firstRun) OnReset();
         //UI Handling
         if (gameUI.activeSelf) gameUI.SetActive(false);
         if (winUI.activeSelf) winUI.SetActive(false);
         if (loseUI.activeSelf) loseUI.SetActive(false);
         titleUI.SetActive(true);
-
-        //Initialize other things (If Neccesary)
-        if(player.gameObject.transform.position != playerSpawn.position) OnReset();
     }
 }
