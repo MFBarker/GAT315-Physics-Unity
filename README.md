@@ -1,10 +1,10 @@
-# GAT315: Unity Physics Exploration
+# GAT315: Unity Physics
 
 This repository contains coursework and experiments from **Neumont College of Computer Science’s GAT315** class, with this project focused on exploring **game physics in the Unity Engine**. The purpose of this project is to gain hands-on experience with 2D and 3D physics simulations, Unity’s built-in physics systems, and the creation of simple physics-based games.
 
 ---
 
-## Project Structure
+## Project Structure:
 
 ### `3D/`
 Explore the fundamentals of Unity's 3D physics system, including:
